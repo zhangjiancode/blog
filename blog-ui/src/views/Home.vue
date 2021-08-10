@@ -2,12 +2,14 @@
  * @Description: 
  * @Author: 张健66
  * @Date: 2021-08-09 15:47:27
- * @LastEditTime: 2021-08-09 16:02:27
+ * @LastEditTime: 2021-08-10 22:34:29
  * @LastEditors: 张健66
 -->
 <template>
   <div class="home">
     <div @click="test">123123</div>
+    <el-button type="danger">test</el-button>
+    <el-input v-model="input"></el-input>
   </div>
 </template>
 
@@ -18,6 +20,11 @@ import axios from 'axios'
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      input: ''
+    }
+  },
   components: {
     HelloWorld
   },
@@ -30,7 +37,7 @@ export default {
         responseType: 'application/json'
       })
         .then(function (response) {
-          
+
           console.log(response)
         })
     }
