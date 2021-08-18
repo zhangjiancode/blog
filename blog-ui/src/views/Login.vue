@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: 张健66
  * @Date: 2021-08-10 22:36:31
- * @LastEditTime: 2021-08-10 23:09:30
+ * @LastEditTime: 2021-08-12 18:16:03
  * @LastEditors: 张健66
 -->
 <template>
@@ -16,13 +16,14 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="login">登录</el-button>
+        <el-button type="primary" @click="getList">获取列表</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { login,getList } from '@/api'
 export default {
   name: "Login",
   data () {
@@ -36,15 +37,18 @@ export default {
   methods: {
     login () {
       const _this = this
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:3000/api/user/login',
-        data: { ..._this.form },
-        responseType: 'application/json'
-      }).then(function (response) {
+      login(_this.form).then(res=>{
 
-          console.log(response)
-        })
+      })
+    },
+    getList () {
+      let param = {
+        author:'zhangjian',
+        keyword:''
+      }
+      getList(param).then(res=>{
+
+      })
     }
   }
 }

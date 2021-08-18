@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 张健66
  * @Date: 2021-08-06 21:59:38
- * @LastEditTime: 2021-08-08 10:11:03
+ * @LastEditTime: 2021-08-12 16:31:48
  * @LastEditors: 张健66
  */
 const { addBlog, delBlog, modifyBlog, getList, queryDetail } = require('../controller/blog')
@@ -11,10 +11,11 @@ const { SuccessModel, ErrorModel } = require('../model/resModel')
 const handleBlogRouter = (req, res) => {
   const { method, url } = req
   const path = url.split('?')[0]
-
+console.log(url)
   // 获取信息列表
   if (method === 'GET' && path === '/api/blog/list') {
     const queryObj = getUrlParams(req.url)
+    console.log(queryObj)
     const result = getList(queryObj.author, queryObj.keyword)
     return result.then(listData => {
       return new SuccessModel(listData)
